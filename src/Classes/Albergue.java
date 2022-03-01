@@ -38,6 +38,14 @@ public class Albergue implements Serializable{
         return validador;
     }
 
+    @Override
+    public String toString() {
+        return "Nombre: " + Nombre + "\n" +
+               "Capacidad: " + Capacidad + "\n" +
+               "Precio: " + Precio + "\n" +
+               "Localidad: " + Localidad + "\n";
+    }
+
     public String getNombre() {
         return Nombre;
     }

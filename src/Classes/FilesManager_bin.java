@@ -45,7 +45,7 @@ public class FilesManager_bin {
     
     public static void showFile(String FileRoute){
         FileInputStream fis;
-        ObjectInputStream fileIn = null;
+        ObjectInputStream fileIn;
         try{
             fis = new FileInputStream(FileRoute);
             fileIn = new ObjectInputStream(fis);
@@ -143,10 +143,9 @@ public class FilesManager_bin {
             Localidad object;
             do{
                 object = (Localidad)fileIn.readObject();
-                localidad.add((Localidad)object);
-                /*if (object!=null){
-                    
-                }*/
+                if (object!=null){
+                    localidad.add((Localidad)object);
+                }
             }while(object!=null);
             System.out.println();
             fileIn.close();
@@ -336,7 +335,7 @@ public class FilesManager_bin {
         return validator;
     }
     
-    public static int getIndex(String search, String FileRoute){
+    public static int getIndexPeregrino(String search, String FileRoute){
         ArrayList<Peregrino> peregrino = new ArrayList<>();
         peregrino = showListedPeregrinoFile(FileRoute);
         int index = 0;
@@ -344,6 +343,20 @@ public class FilesManager_bin {
         System.out.println(FileRoute);
         for(int i = 0; i < peregrino.size(); i++){
             if((peregrino.get(i)).getNombre().equals(search)){
+                return i;
+            }
+        }
+        return index;
+    }
+    
+    public static int getIndexLocalidad(String search, String FileRoute){
+        ArrayList<Localidad> localidad = new ArrayList<>();
+        localidad = showListedLocalidadFile(FileRoute);
+        int index = 0;
+        System.out.println(search);
+        System.out.println(FileRoute);
+        for(int i = 0; i < localidad.size(); i++){
+            if((localidad.get(i)).getNombre().equals(search)){
                 return i;
             }
         }

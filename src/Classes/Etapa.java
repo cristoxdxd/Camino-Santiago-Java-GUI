@@ -23,11 +23,15 @@ public class Etapa implements Serializable{
     }
     
     public String formatRegister(int number){
-        String register = null;
+        String register;
+        String[] someLocalidades = new String[localidades.length];
+        for (int i = 0; i < localidades.length; i++){
+            someLocalidades[i] = localidades[i].getNombre();
+        }
         register = number + "\t" + Nombre + "\t" +
             Km + "\t" +
             tiempo + "\t" +
-            Arrays.toString(localidades);
+            Arrays.toString(someLocalidades);
         return register;
     }
     
@@ -37,6 +41,14 @@ public class Etapa implements Serializable{
             validador = true;
         }
         return validador;
+    }
+    
+    @Override
+    public String toString() {
+        return "Nombre: " + Nombre + "\n" +
+               "Distancia: " + Km + "\n" +
+               "Tiempo: " + tiempo + "\n" +
+               "Localidades: " + Arrays.toString(localidades) + "\n"; 
     }
 
     public String getNombre() {

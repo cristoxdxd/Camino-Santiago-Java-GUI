@@ -11,6 +11,16 @@ public class TestControllerbin_Etapas {
     public static void main(String[] args) throws NoSuchAlgorithmException {
         System.out.println("\tTo test Binary Etapa\n--> Cristopher Herrera");
         String FileRoute = "EtapasBinary.data";
+        String FileRouteLocalidad = "LocalidadesBinary.data";
+        ArrayList<Localidad> localidadesInit = FilesManager_bin.showListedLocalidadFile(FileRouteLocalidad);
+        int indexLocalidad1 = FilesManager_bin.getIndexLocalidad("St. Jean Pied de Port", FileRouteLocalidad);
+        int indexLocalidad2 = FilesManager_bin.getIndexLocalidad("Roncesvalles", FileRouteLocalidad);
+        Localidad[] initLocalidades1 = {localidadesInit.get(indexLocalidad1), localidadesInit.get(indexLocalidad2)};
+        int indexLocalidad3 = FilesManager_bin.getIndexLocalidad("Zubiri", FileRouteLocalidad);
+        Localidad[] initLocalidades2 = {localidadesInit.get(indexLocalidad2), localidadesInit.get(indexLocalidad3)};
+        Etapa[] etapas = {new Etapa("Etapa 1 (Camino Frances)", 24.2, 6, initLocalidades1),
+                          new Etapa("Etapa 2 (Camino Frances)", 21.5, 5, initLocalidades2)};
+        FilesManager_bin.addRegisters(etapas, FileRoute);
         int option = 0;
         final int exit = 7;
         do{
@@ -27,8 +37,8 @@ public class TestControllerbin_Etapas {
                 case 1:
                     ArrayList<Etapa> newArrayEtapas = new ArrayList<>();
                     newArrayEtapas = FilesManager_bin.showListedEtapaFile(FileRoute);
-                    System.out.printf("\n%-6s%-40s%-15s%-10s%-30s","Nro.","Nombre","Km", "Tiempo", "Localidades\n");
-                    for(int i = 1; i < newArrayEtapas.size(); i++){
+                    System.out.printf("\n%-6s%-40s%-15s%-10s%-30s","Nro.","Nombre","Km", "Tiempo (h)", "Localidades\n");
+                    for(int i = 1; i < newArrayEtapas.size()+1; i++){
                         System.out.println((newArrayEtapas.get(i-1)).formatRegister(i));
                     }
                     break;
@@ -36,9 +46,21 @@ public class TestControllerbin_Etapas {
                     FilesManager_bin.showFile(FileRoute);
                     break;
                 case 3:
-                    Localidad localidad = new Localidad();
-                    Localidad[] newlocalidades = {localidad};
+                    Localidad[] newlocalidades = new Localidad[3];
+                    ArrayList<Localidad> localidades = FilesManager_bin.showListedLocalidadFile(FileRouteLocalidad);
                     System.out.println("\n\tRegistro Nueva Etapa");
+                    String unaLocalidad;
+                    int i = 0;
+                    do{
+                        unaLocalidad = StandarReading.readString("\nIngrese las localidades\n(Press 'X' to exit)\n");
+                        if (FilesManager_bin.findLocalidadinFile(unaLocalidad, FileRouteLocalidad)){
+                            int j = FilesManager_bin.getIndexLocalidad(unaLocalidad, FileRouteLocalidad);
+                            newlocalidades[i] = localidades.get(j);
+                        }else{
+                            System.out.println("No es una localidad.");
+                        }
+                        i++;
+                    }while(!unaLocalidad.equalsIgnoreCase("X"));
                     Etapa newClient = new Etapa(
                             StandarReading.readString("Nombre: "), 
                             StandarReading.readDouble("Km: "), 

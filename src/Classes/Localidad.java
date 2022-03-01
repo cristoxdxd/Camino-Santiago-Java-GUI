@@ -9,14 +9,14 @@ import java.io.Serializable;
 public class Localidad implements Serializable{
     private String Nombre;
     private String ComunidadAutonoma;
-    private int CodigoPostal;
+    private String CodigoPostal;
     private boolean Salida;
     private boolean Intermedio;
     private boolean Llegada;
     
     public Localidad(){}
     
-    public Localidad(String Nombre, String ComunidadAutonoma, int CodigoPostal, boolean Salida, boolean Intermedio, boolean Llegada){
+    public Localidad(String Nombre, String ComunidadAutonoma, String CodigoPostal, boolean Salida, boolean Intermedio, boolean Llegada){
         this.Nombre = Nombre;
         this.ComunidadAutonoma = ComunidadAutonoma;
         this.CodigoPostal = CodigoPostal;
@@ -56,11 +56,23 @@ public class Localidad implements Serializable{
     
     public boolean find(String search){
         boolean validador = false;
-        if(search.equals(this.Nombre) || search.equals(this.ComunidadAutonoma) || search.equals(this.CodigoPostal)){
+        if(search.equals(this.Nombre)){
             validador = true;
         }
         return validador;
     }
+
+    @Override
+    public String toString() {
+        return "Nombre: " + Nombre + "\n" + 
+               "Comunidad Autónoma: " + ComunidadAutonoma + "\n" +
+               "Código Postal: " + CodigoPostal + "\n" +
+               "Salida: " + Salida + "\n" +
+               "Intermedio: " + Intermedio + "\n" +
+               "Llegada: " + Llegada + "\n";
+    }
+    
+    
 
     public String getNombre() {
         return Nombre;
@@ -76,10 +88,10 @@ public class Localidad implements Serializable{
         this.ComunidadAutonoma = ComunidadAutonoma;
     }
 
-    public int getCodigoPostal() {
+    public String getCodigoPostal() {
         return CodigoPostal;
     }
-    public void setCodigoPostal(int CodigoPostal) {
+    public void setCodigoPostal(String CodigoPostal) {
         this.CodigoPostal = CodigoPostal;
     }
 

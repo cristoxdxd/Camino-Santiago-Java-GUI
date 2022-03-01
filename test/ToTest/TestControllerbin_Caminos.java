@@ -28,7 +28,7 @@ public class TestControllerbin_Caminos {
                     ArrayList<Camino> newArrayCaminos = new ArrayList<>();
                     newArrayCaminos = FilesManager_bin.showListedCaminoFile(FileRoute);
                     System.out.printf("\n%-6s%-40s%-15s%-10s%-30s","Nro.","Nombre","Km", "Tiempo", "Etapas\n");
-                    for(int i = 1; i < newArrayCaminos.size(); i++){
+                    for(int i = 1; i < newArrayCaminos.size()+1; i++){
                         System.out.println((newArrayCaminos.get(i-1)).formatRegister(i));
                     }
                     break;

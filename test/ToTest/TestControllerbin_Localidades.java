@@ -13,17 +13,12 @@ public class TestControllerbin_Localidades {
         String FileRoute = "LocalidadesBinary.data";
         boolean t = true;
         boolean f = false;
-        Localidad[] localidades = {new Localidad("St. Jean Pied de Port","Pyrénées-Atlantiques", 64220, t,f,f),
-                              new Localidad("Santiago de Compostela","La Coruña",15701,f,f,t)/*,
-                              new Localidad("202229011","BAÑO RIOFRIO BRYAN ALEXANDER","bryan.bano@epn.edu.ec"),
-                              new Localidad("202229010","BOLAÑOS TORO LUIS ELIAS","luis.bolanos01@epn.edu.ec"),
-                              new Localidad("202229011","CARDENAS DEL HIERRO FERNANDO JAVIER","fernando.cardenas01@epn.edu.ec"),
-                              new Localidad("202229010","ERAZO LAGUNA STEVEN GABRIEL","steven.erazo@epn.edu.ec"),
-                              new Localidad("202229011","FALCON JACOME ANGEL DIEGO","angel.falcon@epn.edu.ec"),
-                              new Localidad("202229010","FLORES CRUZ JUAN ESTEBAN","juan.flores05@epn.edu.ec"),
-                              new Localidad("202229011","GUERRA CEDEÑO ANTHONY ARIEL","anthony.guerra01@epn.edu.ec"),
-                              new Localidad("202229010","GUERRERO SANCHEZ MATTEW EDUARDO","mattew.guerrero@epn.edu.ec"),
-                              new Localidad("202229011","INGA ANDRADE WILSON JOSUA","wilson.inga@epn.edu.ec")*/};
+        Localidad[] localidades = {new Localidad("St. Jean Pied de Port","Pyrénées-Atlantiques", "64220", t,f,f),
+                                   new Localidad("Roncesvalles","Navarra", "31650", f,t,f),
+                                   new Localidad("Zubiri","Navarra", "31630", f,t,f),
+                                   new Localidad("Santiago de Compostela","La Coruña","15701",f,f,t),
+                                   new Localidad("Lisboa", "Lisboa", "1000-001", t,f,f),
+                                   new Localidad("Oporto", "Porto", "4000-008", t,f,f)};
         FilesManager_bin.addRegisters(localidades, FileRoute);
         int option = 0;
         final int exit = 7;
@@ -41,8 +36,8 @@ public class TestControllerbin_Localidades {
                 case 1:
                     ArrayList<Localidad> newArrayLocalidades = new ArrayList<>();
                     newArrayLocalidades = FilesManager_bin.showListedLocalidadFile(FileRoute);
-                    System.out.printf("\n%-6s%-40s%-50s%-20s%-10s%-10s%-10s","Nro.","Nombre","Comunidad Autonoma", "Código Postal", "Salida", "Intermedio", "Llegada\n");
-                    for(int i = 1; i < newArrayLocalidades.size(); i++){
+                    System.out.printf("\n%-6s%-30s%-25s%-10s%-10s%-15s%-10s","Nro.","Nombre","Comunidad Autonoma", "Código Postal", "Salida", "Intermedio", "Llegada\n");
+                    for(int i = 1; i < newArrayLocalidades.size()+1; i++){
                         System.out.println((newArrayLocalidades.get(i-1)).formatRegister(i));
                     }
                     break;
@@ -54,7 +49,7 @@ public class TestControllerbin_Localidades {
                     Localidad newLocalidad = new Localidad(
                             StandarReading.readString("Nombre: "), 
                             StandarReading.readString("Comunidad Autónoma: "), 
-                            StandarReading.readInt("Codigo Postal: "),
+                            StandarReading.readString("Codigo Postal: "),
                             StandarReading.readBoolean("Salida: "),
                             StandarReading.readBoolean("Intermedio: "),
                             StandarReading.readBoolean("Llegada: "));
@@ -75,13 +70,13 @@ public class TestControllerbin_Localidades {
                     System.out.println("\n\tLocalidad a actualizar \n" + newfile.get(index1));
                     String newNombre = StandarReading.readString("Actualizar Nombre: ");
                     String newCA = StandarReading.readString("Actualizar Comunidad Autónoma: "); 
-                    int newCP = StandarReading.readInt("Actualizar Código Postal: ");
+                    String newCP = StandarReading.readString("Actualizar Código Postal: ");
                     boolean newSalida = StandarReading.readBoolean("Actualizar Salida: ");
                     boolean newIntermedio = StandarReading.readBoolean("Actualizar Intermedio: ");
                     boolean newLlegada = StandarReading.readBoolean("Actualizar Llegada: ");
                     if (newNombre.length()>0) (newfile.get(index1)).setNombre(newNombre);
                     if (newCA.length()>0) (newfile.get(index1)).setComunidadAutonoma(newCA);
-                    if (newCP>0) (newfile.get(index1)).setCodigoPostal(newCP);
+                    if (newCP.length()>0) (newfile.get(index1)).setCodigoPostal(newCP);
                     (newfile.get(index1)).setSalida(newSalida);
                     (newfile.get(index1)).setIntermedio(newIntermedio);
                     (newfile.get(index1)).setLlegada(newLlegada);

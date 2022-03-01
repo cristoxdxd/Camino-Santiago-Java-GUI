@@ -43,6 +43,16 @@ public class Peregrino implements Serializable{
         }
         return validador;
     }
+    
+    @Override
+    public String toString() {
+        return "Nombre: " + Nombre + "\n" +
+               "ID: " + ID + "\n" +
+               "Clave: " + Clave + "\n" +
+               "Domicilio: " + Domicilio + "\n" +
+               "Camino: " + camino.getNombre() + "\n" +
+               "Localidades: " + Arrays.toString(localidades) + "\n"; 
+    }
 
     public String getNombre() {
         return Nombre;

@@ -28,7 +28,7 @@ public class TestControllerbin_Albergues {
                     ArrayList<Albergue> newArrayAlbergues = new ArrayList<>();
                     newArrayAlbergues = FilesManager_bin.showListedAlbergueFile(FileRoute);
                     System.out.printf("\n%-6s%-40s%-10s%-10s%-30s","Nro.","Nombre","Capacidad", "Precio", "Localidad\n");
-                    for(int i = 1; i < newArrayAlbergues.size(); i++){
+                    for(int i = 1; i < newArrayAlbergues.size()+1; i++){
                         System.out.println((newArrayAlbergues.get(i-1)).formatRegister(i));
                     }
                     break;

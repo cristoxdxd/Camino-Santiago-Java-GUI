@@ -38,6 +38,14 @@ public class Camino implements Serializable{
         }
         return validador;
     }
+    
+    @Override
+    public String toString() {
+        return "Nombre: " + Nombre + "\n" +
+               "Distancia: " + Km + "\n" +
+               "Tiempo: " + tiempo + "\n" +
+               "Etapas: " + Arrays.toString(etapas) + "\n"; 
+    }
 
     public String getNombre() {
         return Nombre;

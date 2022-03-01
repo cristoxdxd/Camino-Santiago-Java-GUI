@@ -28,7 +28,7 @@ public class TestControllerbin_Peregrinos {
                     ArrayList<Peregrino> students2 = new ArrayList<>();
                     students2 = FilesManager_bin.showListedPeregrinoFile(FileRoute);
                     System.out.printf("\n%-6s%-40s%-13s%-8s%-30s%-30s%-20s","Nro.","Nombre","ID", "Clave", "Domicilio", "Camino", "Localidades\n");
-                    for(int i = 1; i < students2.size(); i++){
+                    for(int i = 1; i < students2.size()+1; i++){
                         System.out.println((students2.get(i-1)).formatRegister(i));
                     }
                     break;
