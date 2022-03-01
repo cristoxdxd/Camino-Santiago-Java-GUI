@@ -9,14 +9,14 @@ import java.io.Serializable;
 public class Localidad implements Serializable{
     private String Nombre;
     private String ComunidadAutonoma;
-    private String CodigoPostal;
+    private int CodigoPostal;
     private boolean Salida;
     private boolean Intermedio;
     private boolean Llegada;
     
     public Localidad(){}
     
-    public Localidad(String Nombre, String ComunidadAutonoma, String CodigoPostal, boolean Salida, boolean Intermedio, boolean Llegada){
+    public Localidad(String Nombre, String ComunidadAutonoma, int CodigoPostal, boolean Salida, boolean Intermedio, boolean Llegada){
         this.Nombre = Nombre;
         this.ComunidadAutonoma = ComunidadAutonoma;
         this.CodigoPostal = CodigoPostal;
@@ -76,10 +76,10 @@ public class Localidad implements Serializable{
         this.ComunidadAutonoma = ComunidadAutonoma;
     }
 
-    public String getCodigoPostal() {
+    public int getCodigoPostal() {
         return CodigoPostal;
     }
-    public void setCodigoPostal(String CodigoPostal) {
+    public void setCodigoPostal(int CodigoPostal) {
         this.CodigoPostal = CodigoPostal;
     }
 

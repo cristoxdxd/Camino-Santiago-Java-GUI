@@ -9,27 +9,27 @@ import java.util.*;
  */
 public class TestControllerbin_Etapas {
     public static void main(String[] args) throws NoSuchAlgorithmException {
-        System.out.println("\tTo test Binary\n--> Cristopher Herrera");
+        System.out.println("\tTo test Binary Etapa\n--> Cristopher Herrera");
         String FileRoute = "EtapasBinary.data";
         int option = 0;
         final int exit = 7;
         do{
-            option = StandarReading.readInt("\n\tFuture Promises School"
-                    + "\n1. Show Clients List"
-                    + "\n2. Show Clients (one-by-one)"
-                    + "\n3. Add a Clients"
-                    + "\n4. Find data"
-                    + "\n5. Update a Clients (by List Number)"
-                    + "\n6. Remove a Clients (by List Number)"
+            option = StandarReading.readInt("\n\tEtapas"
+                    + "\n1. Mostrar lista de Etapas"
+                    + "\n2. Mostrar (objetos) Etapas"
+                    + "\n3. Agregar Etapas"
+                    + "\n4. Buscar en Etapas"
+                    + "\n5. Actualizar una Etapa (por número de lista)"
+                    + "\n6. Eliminar una Etapa (por número de lista)"
                     + "\n" + Integer.toString(exit) + ". Salir"
-                    + "\nEnter your option: ");
+                    + "\nOpción: ");
             switch(option){
                 case 1:
-                    ArrayList<Etapa> students2 = new ArrayList<>();
-                    students2 = FilesManager_bin.showListedEtapaFile(FileRoute);
-                    System.out.printf("\n%-6s%-12s%-40s%-20s%-30s%-20s","Nro.","CardCode","Fullname", "Password", "Balance", "Birthday\n");
-                    for(int i = 1; i < students2.size(); i++){
-                        System.out.println((students2.get(i-1)).formatRegister(i));
+                    ArrayList<Etapa> newArrayEtapas = new ArrayList<>();
+                    newArrayEtapas = FilesManager_bin.showListedEtapaFile(FileRoute);
+                    System.out.printf("\n%-6s%-40s%-15s%-10s%-30s","Nro.","Nombre","Km", "Tiempo", "Localidades\n");
+                    for(int i = 1; i < newArrayEtapas.size(); i++){
+                        System.out.println((newArrayEtapas.get(i-1)).formatRegister(i));
                     }
                     break;
                 case 2:
@@ -38,51 +38,48 @@ public class TestControllerbin_Etapas {
                 case 3:
                     Localidad localidad = new Localidad();
                     Localidad[] newlocalidades = {localidad};
-                    System.out.println("\n\tNew Student Registration");
+                    System.out.println("\n\tRegistro Nueva Etapa");
                     Etapa newClient = new Etapa(
-                            StandarReading.readString("CardCode: "), 
-                            StandarReading.readString("Fullname (Lastnames & Names): ").toUpperCase(), 
-                            StandarReading.readString("Password: "),
-                            StandarReading.readDouble("Balance: "),
-                            StandarReading.readString("Birthday: "));
+                            StandarReading.readString("Nombre: "), 
+                            StandarReading.readDouble("Km: "), 
+                            StandarReading.readInt("Tiempo: "),
+                            newlocalidades);
                     if(FilesManager_bin.addRegister(newClient, FileRoute))
-                        System.out.println("\n\tRegistration Completed.\n");
+                        System.out.println("\n\tRegistro Completado.\n");
                     else
-                        System.out.println("Unexpeted error!");
+                        System.out.println("Error inesperadp!");
                     break;
                 case 4:
-                    String searchWord = StandarReading.readString("Enter your search: ");
-                    System.out.println("\nRecords that contains: " + searchWord);
+                    String searchWord = StandarReading.readString("Ingrese su busqueda: ");
+                    System.out.println("\nRegistros que contiene: " + searchWord);
                     System.out.println(FilesManager_bin.findEtapainFile(searchWord, FileRoute));
                     break;
                 case 5:
-                    Localidad localidad = new Localidad();
-                    Localidad[] newlocalidades = {localidad};
                     ArrayList<Etapa> newfile = new ArrayList<>();
                     newfile = FilesManager_bin.showListedEtapaFile(FileRoute);
-                    int index1 = StandarReading.readInt("Enter List Number to update: ")-1;
-                    System.out.println("\n\tRegister to update \n" + newfile.get(index1));
-                    String Pw = StandarReading.readString("Update password: ");
-                    //int newPw = Integer.parseInt(Pw);
-                    String Bal = StandarReading.readString("Update balance: "); 
-                    Double newFN = Double.parseDouble(Bal);
-                    if (Pw.length()>0) (newfile.get(index1)).setPassword(Pw);
-                    if (Bal.length()>0) (newfile.get(index1)).setBalance(newFN);
-                    System.out.println("\tUpdated data\n" + newfile.get(index1));
+                    int index1 = StandarReading.readInt("Ingrese el número de lista a actualizar: ")-1;
+                    System.out.println("\n\tEtapa a actualizar \n" + newfile.get(index1));
+                    String Nombre = StandarReading.readString("Actualizar nombre: ");
+                    double Km = StandarReading.readDouble("Actualizar Km: ");
+                    int tiempo = StandarReading.readInt("Actualizar tiempo: ");
+                    if (Nombre.length()>0) (newfile.get(index1)).setNombre(Nombre);
+                    if (Km>0) (newfile.get(index1)).setKm(Km);
+                    if (tiempo>0) (newfile.get(index1)).setTiempo(tiempo);
+                    System.out.println("\tDatos actualizados\n" + newfile.get(index1));
                     Object[] modifiedStudent = newfile.toArray();
                     if (FilesManager_bin.addRegisters(modifiedStudent, FileRoute))
-                        System.out.println("The list was updated successfully.");
+                        System.out.println("La estapa fue actualizada.");
                     break;
                 case 6:
-                    ArrayList<Clients> newfile2 = new ArrayList<>();
-                    newfile2 = FilesManager_bin.showListedFile(FileRoute);
-                    int index2 = StandarReading.readInt("Enter List Number to update: ");
-                    System.out.println("\tStudent to remove\n" + newfile2.get(index2));
-                    if(StandarReading.readString("Are you sure to remove this student? (Y/N): ").equalsIgnoreCase("Y")){
+                    ArrayList<Etapa> newfile2 = new ArrayList<>();
+                    newfile2 = FilesManager_bin.showListedEtapaFile(FileRoute);
+                    int index2 = StandarReading.readInt("Ingrese el número de lista a remover: ")-1;
+                    System.out.println("\tEtapa a remover\n" + newfile2.get(index2));
+                    if(StandarReading.readString("Seguro que quieres eliminar esta etapa? (S/N): ").equalsIgnoreCase("S")){
                         newfile2.remove(index2);
                         Object[] modifiedList = newfile2.toArray();
                         if (FilesManager_bin.addRegisters(modifiedList, FileRoute))
-                            System.out.println("The student was removed successfully.");
+                            System.out.println("La estapa fue removida.");
                     }
                     break;
                 case exit:

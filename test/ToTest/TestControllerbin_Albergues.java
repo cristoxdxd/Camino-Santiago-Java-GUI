@@ -1,5 +1,6 @@
 package ToTest;
 
+import Classes.*;
 import java.security.*;
 import java.util.*;
 
@@ -8,83 +9,84 @@ import java.util.*;
  */
 public class TestControllerbin_Albergues {
     public static void main(String[] args) throws NoSuchAlgorithmException {
-        System.out.println("\tTo test Binary\n--> Cristopher Herrera");
+        System.out.println("\tTo test Binary Albergue\n--> Cristopher Herrera");
         String FileRoute = "AlberguesBinary.data";
         int option = 0;
         final int exit = 7;
         do{
-            option = StandarReading.readInt("\n\tFuture Promises School"
-                    + "\n1. Show Clients List"
-                    + "\n2. Show Clients (one-by-one)"
-                    + "\n3. Add a Clients"
-                    + "\n4. Find data"
-                    + "\n5. Update a Clients (by List Number)"
-                    + "\n6. Remove a Clients (by List Number)"
+            option = StandarReading.readInt("\n\tAlbergues"
+                    + "\n1. Mostrar lista de Albergues"
+                    + "\n2. Mostrar (objetos) Albergues"
+                    + "\n3. Agregar Albergues"
+                    + "\n4. Buscar en Albergues"
+                    + "\n5. Actualizar un Albergue (por número de lista)"
+                    + "\n6. Eliminar un Albergue (por número de lista)"
                     + "\n" + Integer.toString(exit) + ". Salir"
-                    + "\nEnter your option: ");
-            /*switch(option){
+                    + "\nOpción: ");
+            switch(option){
                 case 1:
-                    ArrayList<Clients> students2 = new ArrayList<>();
-                    students2 = FilesManager_bin.showListedFile(FileRoute);
-                    System.out.printf("\n%-6s%-12s%-40s%-20s%-30s%-20s","Nro.","CardCode","Fullname", "Password", "Balance", "Birthday\n");
-                    for(int i = 1; i < students2.size(); i++){
-                        System.out.println((students2.get(i-1)).formatRegister(i));
+                    ArrayList<Albergue> newArrayAlbergues = new ArrayList<>();
+                    newArrayAlbergues = FilesManager_bin.showListedAlbergueFile(FileRoute);
+                    System.out.printf("\n%-6s%-40s%-10s%-10s%-30s","Nro.","Nombre","Capacidad", "Precio", "Localidad\n");
+                    for(int i = 1; i < newArrayAlbergues.size(); i++){
+                        System.out.println((newArrayAlbergues.get(i-1)).formatRegister(i));
                     }
                     break;
                 case 2:
                     FilesManager_bin.showFile(FileRoute);
                     break;
                 case 3:
-                    System.out.println("\n\tNew Student Registration");
-                    Clients newClient = new Clients(
-                            StandarReading.readString("CardCode: "), 
-                            StandarReading.readString("Fullname (Lastnames & Names): ").toUpperCase(), 
-                            StandarReading.readString("Password: "),
-                            StandarReading.readDouble("Balance: "),
-                            StandarReading.readString("Birthday: "));
+                    System.out.println("\n\tRegistration Nuevo Albergue");
+                    Albergue newClient = new Albergue(
+                            StandarReading.readString("Nombre: "), 
+                            StandarReading.readInt("Capacidad: "), 
+                            StandarReading.readDouble("Precio: "),
+                            StandarReading.readString("Localidad: "));
                     if(FilesManager_bin.addRegister(newClient, FileRoute))
-                        System.out.println("\n\tRegistration Completed.\n");
+                        System.out.println("\n\tRegistro Completado.\n");
                     else
-                        System.out.println("Unexpeted error!");
+                        System.out.println("Error inesperado!");
                     break;
                 case 4:
-                    String searchWord = StandarReading.readString("Enter your search: ");
-                    System.out.println("\nRecords that contains: " + searchWord);
-                    System.out.println(FilesManager_bin.findinFile(searchWord, FileRoute));
+                    String searchWord = StandarReading.readString("Ingrese su búsqueda: ");
+                    System.out.println("\nRegistros que contienen: " + searchWord);
+                    System.out.println(FilesManager_bin.findAlbergueinFile(searchWord, FileRoute));
                     break;
                 case 5:
-                    ArrayList<Clients> newfile = new ArrayList<>();
-                    newfile = FilesManager_bin.showListedFile(FileRoute);
-                    int index1 = StandarReading.readInt("Enter List Number to update: ")-1;
-                    System.out.println("\n\tRegister to update \n" + newfile.get(index1));
-                    String Pw = StandarReading.readString("Update password: ");
-                    //int newPw = Integer.parseInt(Pw);
-                    String Bal = StandarReading.readString("Update balance: "); 
-                    Double newFN = Double.parseDouble(Bal);
-                    if (Pw.length()>0) (newfile.get(index1)).setPassword(Pw);
-                    if (Bal.length()>0) (newfile.get(index1)).setBalance(newFN);
-                    System.out.println("\tUpdated data\n" + newfile.get(index1));
+                    ArrayList<Albergue> newfile = new ArrayList<>();
+                    newfile = FilesManager_bin.showListedAlbergueFile(FileRoute);
+                    int index1 = StandarReading.readInt("Ingrese el número de lista a actualizar: ")-1;
+                    System.out.println("\n\tAlbergue a actualizar \n" + newfile.get(index1));
+                    String Nombre = StandarReading.readString("Actualizar Nombre: ");
+                    int Capacidad = StandarReading.readInt("Actualizar capacidad: "); 
+                    double Precio = StandarReading.readDouble("Actualizar precio: ");
+                    String Localidad = StandarReading.readString("Actualizar Localidad: ");
+                    if (Nombre.length()>0) (newfile.get(index1)).setNombre(Nombre);
+                    if (Capacidad>0) (newfile.get(index1)).setCapacidad(Capacidad);
+                    if (Precio>0) (newfile.get(index1)).setPrecio(Precio);
+                    if (Localidad.length()>0) (newfile.get(index1)).setLocalidad(Localidad);
+                    System.out.println("\tDatos actualizados\n" + newfile.get(index1));
                     Object[] modifiedStudent = newfile.toArray();
                     if (FilesManager_bin.addRegisters(modifiedStudent, FileRoute))
-                        System.out.println("The list was updated successfully.");
+                        System.out.println("El albergue fue actualizado.");
                     break;
                 case 6:
-                    ArrayList<Clients> newfile2 = new ArrayList<>();
-                    newfile2 = FilesManager_bin.showListedFile(FileRoute);
-                    int index2 = StandarReading.readInt("Enter List Number to update: ");
-                    System.out.println("\tStudent to remove\n" + newfile2.get(index2));
-                    if(StandarReading.readString("Are you sure to remove this student? (Y/N): ").equalsIgnoreCase("Y")){
+                    ArrayList<Albergue> newfile2 = new ArrayList<>();
+                    newfile2 = FilesManager_bin.showListedAlbergueFile(FileRoute);
+                    int index2 = StandarReading.readInt("Ingrese el número de lista a remover: ");
+                    System.out.println("\tAlbergue a remover\n" + newfile2.get(index2));
+                    if(StandarReading.readString("Seguro que quieres eliminar esta etapa? (S/N): ").equalsIgnoreCase("S")){
                         newfile2.remove(index2);
                         Object[] modifiedList = newfile2.toArray();
                         if (FilesManager_bin.addRegisters(modifiedList, FileRoute))
-                            System.out.println("The student was removed successfully.");
+                            System.out.println("El albergue fue removido.");
                     }
                     break;
                 case exit:
                     break;
                 default:
                     break;
-            }*/
+            }
         }while(option!=7);
     }
 }

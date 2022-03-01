@@ -11,6 +11,20 @@ public class TestControllerbin_Localidades {
     public static void main(String[] args) throws NoSuchAlgorithmException {
         System.out.println("\tTo test Binary Localidad\n--> Cristopher Herrera");
         String FileRoute = "LocalidadesBinary.data";
+        boolean t = true;
+        boolean f = false;
+        Localidad[] localidades = {new Localidad("St. Jean Pied de Port","Pyrénées-Atlantiques", 64220, t,f,f),
+                              new Localidad("Santiago de Compostela","La Coruña",15701,f,f,t)/*,
+                              new Localidad("202229011","BAÑO RIOFRIO BRYAN ALEXANDER","bryan.bano@epn.edu.ec"),
+                              new Localidad("202229010","BOLAÑOS TORO LUIS ELIAS","luis.bolanos01@epn.edu.ec"),
+                              new Localidad("202229011","CARDENAS DEL HIERRO FERNANDO JAVIER","fernando.cardenas01@epn.edu.ec"),
+                              new Localidad("202229010","ERAZO LAGUNA STEVEN GABRIEL","steven.erazo@epn.edu.ec"),
+                              new Localidad("202229011","FALCON JACOME ANGEL DIEGO","angel.falcon@epn.edu.ec"),
+                              new Localidad("202229010","FLORES CRUZ JUAN ESTEBAN","juan.flores05@epn.edu.ec"),
+                              new Localidad("202229011","GUERRA CEDEÑO ANTHONY ARIEL","anthony.guerra01@epn.edu.ec"),
+                              new Localidad("202229010","GUERRERO SANCHEZ MATTEW EDUARDO","mattew.guerrero@epn.edu.ec"),
+                              new Localidad("202229011","INGA ANDRADE WILSON JOSUA","wilson.inga@epn.edu.ec")*/};
+        FilesManager_bin.addRegisters(localidades, FileRoute);
         int option = 0;
         final int exit = 7;
         do{
@@ -27,7 +41,7 @@ public class TestControllerbin_Localidades {
                 case 1:
                     ArrayList<Localidad> newArrayLocalidades = new ArrayList<>();
                     newArrayLocalidades = FilesManager_bin.showListedLocalidadFile(FileRoute);
-                    System.out.printf("\n%-6s%-12s%-40s%-20s%-30s%-20s","Nro.","Nombre","Comunidad Autonoma", "Código Postal", "Balance", "Birthday\n");
+                    System.out.printf("\n%-6s%-40s%-50s%-20s%-10s%-10s%-10s","Nro.","Nombre","Comunidad Autonoma", "Código Postal", "Salida", "Intermedio", "Llegada\n");
                     for(int i = 1; i < newArrayLocalidades.size(); i++){
                         System.out.println((newArrayLocalidades.get(i-1)).formatRegister(i));
                     }
@@ -36,38 +50,38 @@ public class TestControllerbin_Localidades {
                     FilesManager_bin.showFile(FileRoute);
                     break;
                 case 3:
-                    System.out.println("\n\tNew Student Registration");
+                    System.out.println("\n\tRegistro Nueva Localidad");
                     Localidad newLocalidad = new Localidad(
                             StandarReading.readString("Nombre: "), 
-                            StandarReading.readString("Comunidad Autónoma: ").toUpperCase(), 
-                            StandarReading.readString("Codigo Postal: "),
+                            StandarReading.readString("Comunidad Autónoma: "), 
+                            StandarReading.readInt("Codigo Postal: "),
                             StandarReading.readBoolean("Salida: "),
-                            StandarReading.readBoolean("Intermedio"),
+                            StandarReading.readBoolean("Intermedio: "),
                             StandarReading.readBoolean("Llegada: "));
                     if(FilesManager_bin.addRegister(newLocalidad, FileRoute))
-                        System.out.println("\n\tRegistro de nueva Localida completado.\n");
+                        System.out.println("\n\tRegistro de nueva Localidad completado.\n");
                     else
                         System.out.println("Error inesperado");
                     break;
                 case 4:
-                    String searchWord = StandarReading.readString("Enter your search: ");
-                    System.out.println("\nRecords that contains: " + searchWord);
+                    String searchWord = StandarReading.readString("Ingrese su busqueda: ");
+                    System.out.println("\nRegistros que contienen: " + searchWord);
                     System.out.println(FilesManager_bin.findLocalidadinFile(searchWord, FileRoute));
                     break;
                 case 5:
                     ArrayList<Localidad> newfile = new ArrayList<>();
                     newfile = FilesManager_bin.showListedLocalidadFile(FileRoute);
-                    int index1 = StandarReading.readInt("Enter List Number to update: ")-1;
+                    int index1 = StandarReading.readInt("Ingrese el número de lista a actualizar: ")-1;
                     System.out.println("\n\tLocalidad a actualizar \n" + newfile.get(index1));
                     String newNombre = StandarReading.readString("Actualizar Nombre: ");
                     String newCA = StandarReading.readString("Actualizar Comunidad Autónoma: "); 
-                    String newCP = StandarReading.readString("Actualizar Código Postal: ");
+                    int newCP = StandarReading.readInt("Actualizar Código Postal: ");
                     boolean newSalida = StandarReading.readBoolean("Actualizar Salida: ");
                     boolean newIntermedio = StandarReading.readBoolean("Actualizar Intermedio: ");
                     boolean newLlegada = StandarReading.readBoolean("Actualizar Llegada: ");
                     if (newNombre.length()>0) (newfile.get(index1)).setNombre(newNombre);
                     if (newCA.length()>0) (newfile.get(index1)).setComunidadAutonoma(newCA);
-                    if (newCP.length()>0) (newfile.get(index1)).setCodigoPostal(newCP);
+                    if (newCP>0) (newfile.get(index1)).setCodigoPostal(newCP);
                     (newfile.get(index1)).setSalida(newSalida);
                     (newfile.get(index1)).setIntermedio(newIntermedio);
                     (newfile.get(index1)).setLlegada(newLlegada);
@@ -79,13 +93,13 @@ public class TestControllerbin_Localidades {
                 case 6:
                     ArrayList<Localidad> newfile2 = new ArrayList<>();
                     newfile2 = FilesManager_bin.showListedLocalidadFile(FileRoute);
-                    int index2 = StandarReading.readInt("Enter List Number to update: ");
-                    System.out.println("\tStudent to remove\n" + newfile2.get(index2));
-                    if(StandarReading.readString("Are you sure to remove this student? (Y/N): ").equalsIgnoreCase("Y")){
+                    int index2 = StandarReading.readInt("Ingrese el número de lista a remover: ")-1;
+                    System.out.println("\tLocalidad a remover\n" + newfile2.get(index2));
+                    if(StandarReading.readString("Seguro que quieres eliminar esta localidad? (S/N): ").equalsIgnoreCase("S")){
                         newfile2.remove(index2);
                         Object[] modifiedList = newfile2.toArray();
                         if (FilesManager_bin.addRegisters(modifiedList, FileRoute))
-                            System.out.println("The student was removed successfully.");
+                            System.out.println("La localidad fue removida.");
                     }
                     break;
                 case exit:

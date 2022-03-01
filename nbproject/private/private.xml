@@ -2,6 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/cristo/NetBeansProjects/GrupoF_P2/test/ToTest/TestControllerbin_Peregrinos.java</file>
+            <file>file:/home/cristo/NetBeansProjects/GrupoF_P2/src/Classes/FilesManager_bin.java</file>
+            <file>file:/home/cristo/NetBeansProjects/GrupoF_P2/test/ToTest/TestControllerbin_Etapas.java</file>
+            <file>file:/home/cristo/NetBeansProjects/GrupoF_P2/src/Classes/Etapa.java</file>
+        </group>
     </open-files>
 </project-private>
