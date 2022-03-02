@@ -11,6 +11,13 @@ public class TestControllerbin_Caminos {
     public static void main(String[] args) throws NoSuchAlgorithmException {
         System.out.println("\tTo test Binary Caminos\n--> Cristopher Herrera");
         String FileRoute = "CaminosBinary.data";
+        String FileRouteEtapa = "EtapasBinary.data";
+        ArrayList<Etapa> etapasInit = FilesManager_bin.showListedEtapaFile(FileRouteEtapa);
+        int indexEtapa1 = FilesManager_bin.getIndexEtapa("Etapa 1 (Camino Frances)", FileRouteEtapa);
+        int indexEtapa2 = FilesManager_bin.getIndexEtapa("Etapa 2 (Camino Frances)", FileRouteEtapa);
+        Etapa[] initEtapa1 = {etapasInit.get(indexEtapa1), etapasInit.get(indexEtapa2)};
+        Camino[] camino = {new Camino("Camino Frances", 24.2, 6, initEtapa1)};
+        FilesManager_bin.addRegisters(camino, FileRoute);
         int option = 0;
         final int exit = 7;
         do{
@@ -36,9 +43,21 @@ public class TestControllerbin_Caminos {
                     FilesManager_bin.showFile(FileRoute);
                     break;
                 case 3:
-                    Etapa etapas = new Etapa();
-                    Etapa[] newEtapas = {etapas};
+                    Etapa[] newEtapas = new Etapa[40];
+                    ArrayList<Etapa> etapas = FilesManager_bin.showListedEtapaFile(FileRouteEtapa);
                     System.out.println("\n\tRegistro Nuevo Camino");
+                    String unaEtapa;
+                    int i = 0;
+                    do{
+                        unaEtapa = StandarReading.readString("\nIngrese las etapas\n(Press 'X' to exit)\n");
+                        if (FilesManager_bin.findEtapainFile(unaEtapa, FileRouteEtapa)){
+                            int j = FilesManager_bin.getIndexEtapa(unaEtapa, FileRouteEtapa);
+                            newEtapas[i] = etapas.get(j);
+                        }else{
+                            System.out.println("No es una localidad.");
+                        }
+                        i++;
+                    }while(!unaEtapa.equalsIgnoreCase("X"));
                     Camino newClient = new Camino(
                             StandarReading.readString("Nombre: "), 
                             StandarReading.readDouble("Km: "), 

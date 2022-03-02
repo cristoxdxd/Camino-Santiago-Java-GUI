@@ -12,7 +12,7 @@ public class TestControllerbin_Etapas {
         System.out.println("\tTo test Binary Etapa\n--> Cristopher Herrera");
         String FileRoute = "EtapasBinary.data";
         String FileRouteLocalidad = "LocalidadesBinary.data";
-        ArrayList<Localidad> localidadesInit = FilesManager_bin.showListedLocalidadFile(FileRouteLocalidad);
+        /*ArrayList<Localidad> localidadesInit = FilesManager_bin.showListedLocalidadFile(FileRouteLocalidad);
         int indexLocalidad1 = FilesManager_bin.getIndexLocalidad("St. Jean Pied de Port", FileRouteLocalidad);
         int indexLocalidad2 = FilesManager_bin.getIndexLocalidad("Roncesvalles", FileRouteLocalidad);
         Localidad[] initLocalidades1 = {localidadesInit.get(indexLocalidad1), localidadesInit.get(indexLocalidad2)};
@@ -20,9 +20,9 @@ public class TestControllerbin_Etapas {
         Localidad[] initLocalidades2 = {localidadesInit.get(indexLocalidad2), localidadesInit.get(indexLocalidad3)};
         Etapa[] etapas = {new Etapa("Etapa 1 (Camino Frances)", 24.2, 6, initLocalidades1),
                           new Etapa("Etapa 2 (Camino Frances)", 21.5, 5, initLocalidades2)};
-        FilesManager_bin.addRegisters(etapas, FileRoute);
+        FilesManager_bin.addRegisters(etapas, FileRoute);*/
         int option = 0;
-        final int exit = 7;
+        final int exit = 8;
         do{
             option = StandarReading.readInt("\n\tEtapas"
                     + "\n1. Mostrar lista de Etapas"
@@ -31,6 +31,7 @@ public class TestControllerbin_Etapas {
                     + "\n4. Buscar en Etapas"
                     + "\n5. Actualizar una Etapa (por número de lista)"
                     + "\n6. Eliminar una Etapa (por número de lista)"
+                    + "\n7. Listar Localidades"
                     + "\n" + Integer.toString(exit) + ". Salir"
                     + "\nOpción: ");
             switch(option){
@@ -69,7 +70,7 @@ public class TestControllerbin_Etapas {
                     if(FilesManager_bin.addRegister(newClient, FileRoute))
                         System.out.println("\n\tRegistro Completado.\n");
                     else
-                        System.out.println("Error inesperadp!");
+                        System.out.println("Error inesperado!");
                     break;
                 case 4:
                     String searchWord = StandarReading.readString("Ingrese su busqueda: ");
@@ -102,6 +103,14 @@ public class TestControllerbin_Etapas {
                         Object[] modifiedList = newfile2.toArray();
                         if (FilesManager_bin.addRegisters(modifiedList, FileRoute))
                             System.out.println("La estapa fue removida.");
+                    }
+                    break;
+                case 7:
+                    ArrayList<Localidad> newArrayLocalidades = new ArrayList<>();
+                    newArrayLocalidades = FilesManager_bin.showListedLocalidadFile(FileRoute);
+                    System.out.printf("\n%-6s%-30s%-25s%-10s%-10s%-15s%-10s","Nro.","Nombre","Comunidad Autonoma", "Código Postal", "Salida", "Intermedio", "Llegada\n");
+                    for(int j = 1; j < newArrayLocalidades.size()+1; j++){
+                        System.out.println((newArrayLocalidades.get(j-1)).formatRegister(j));
                     }
                     break;
                 case exit:

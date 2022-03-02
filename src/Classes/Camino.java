@@ -24,10 +24,14 @@ public class Camino implements Serializable{
     
     public String formatRegister(int number){
         String register = null;
+        String[] someEtapas = new String[etapas.length];
+        for (int i = 0; i < etapas.length; i++){
+            someEtapas[i] = etapas[i].getNombre();
+        }
         register = number + "\t" + Nombre + "\t" +
             Km + "\t" +
             tiempo + "\t" +
-            Arrays.toString(etapas);
+            Arrays.toString(someEtapas);
         return register;
     }
     

@@ -88,7 +88,7 @@ public class FilesManager_bin {
         return clients;
     }
     public static ArrayList<Camino> showListedCaminoFile(String FileRoute){
-        ArrayList<Camino> clients = new ArrayList<>();
+        ArrayList<Camino> camino = new ArrayList<>();
         FileInputStream fis;
         ObjectInputStream fileIn;
         try{
@@ -98,7 +98,7 @@ public class FilesManager_bin {
             do{
                 object = (Camino)fileIn.readObject();
                 if (object!=null){
-                    clients.add((Camino)object);
+                    camino.add((Camino)object);
                 }
             }while(object!=null);
             System.out.println();
@@ -108,7 +108,7 @@ public class FilesManager_bin {
         }catch(ClassNotFoundException ex){
             System.out.println("Class Not Found " + ex.getMessage());
         }
-        return clients;
+        return camino;
     }
     public static ArrayList<Etapa> showListedEtapaFile(String FileRoute){
         ArrayList<Etapa> clients = new ArrayList<>();
@@ -357,6 +357,20 @@ public class FilesManager_bin {
         System.out.println(FileRoute);
         for(int i = 0; i < localidad.size(); i++){
             if((localidad.get(i)).getNombre().equals(search)){
+                return i;
+            }
+        }
+        return index;
+    }
+    
+    public static int getIndexEtapa(String search, String FileRoute){
+        ArrayList<Etapa> Etapa = new ArrayList<>();
+        Etapa = showListedEtapaFile(FileRoute);
+        int index = 0;
+        System.out.println(search);
+        System.out.println(FileRoute);
+        for(int i = 0; i < Etapa.size(); i++){
+            if((Etapa.get(i)).getNombre().equals(search)){
                 return i;
             }
         }
