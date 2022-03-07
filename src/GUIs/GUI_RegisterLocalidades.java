@@ -31,6 +31,7 @@ public class GUI_RegisterLocalidades extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         jLabel4.setFont(new java.awt.Font("Arial Narrow", 2, 48)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -53,7 +54,7 @@ public class GUI_RegisterLocalidades extends javax.swing.JFrame {
         TextAreaLocalidades.setRows(5);
         jScrollPane1.setViewportView(TextAreaLocalidades);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 490, 350));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 120, 490, 350));
 
         jLabel5.setFont(new java.awt.Font("Arial Narrow", 2, 48)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -69,7 +70,7 @@ public class GUI_RegisterLocalidades extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 530, -1, -1));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 490, -1, -1));
 
         jLabel1.setBackground(new java.awt.Color(35, 36, 76));
         jLabel1.setFont(new java.awt.Font("Roboto Thin", 3, 18)); // NOI18N
@@ -82,6 +83,17 @@ public class GUI_RegisterLocalidades extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("* Registrar localidades con el nombre exacto (revisar sección Localidades)");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, 580, -1));
+
+        jButton4.setBackground(new java.awt.Color(37, 40, 70));
+        jButton4.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Entrar sin agregar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(607, 540, 250, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 600));
 
@@ -138,9 +150,16 @@ public class GUI_RegisterLocalidades extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        this.setVisible(false);
+        GUI_Principal pPrincipal = new GUI_Principal(indexRL);
+        pPrincipal.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea TextAreaLocalidades;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

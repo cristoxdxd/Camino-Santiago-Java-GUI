@@ -40,7 +40,6 @@ public class GUI_Albergue extends javax.swing.JFrame {
                 }
                 break;
         }
-        
     }
 
     /**
