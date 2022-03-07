@@ -74,7 +74,7 @@ public class GUI_RegisterLocalidades extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(35, 36, 76));
         jLabel1.setFont(new java.awt.Font("Roboto Thin", 3, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("   UNA localidad en cada línea");
+        jLabel1.setText("   UNA localidad en cada línea (dar salto de línea por cada localidad)");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 510, -1, -1));
 
         jLabel2.setBackground(new java.awt.Color(35, 36, 76));
@@ -97,7 +97,7 @@ public class GUI_RegisterLocalidades extends javax.swing.JFrame {
         Localidad[] currentlocalidades = newfile.get(indexRL).getLocalidades();
         int counter = 0;
         for (Localidad currentlocalidad : currentlocalidades) {
-            if (!(currentlocalidad == null)) {
+            if (currentlocalidad != null){
                 counter++;
             }
         }

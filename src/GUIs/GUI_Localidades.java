@@ -16,7 +16,7 @@ public class GUI_Localidades extends javax.swing.JFrame {
         newfile = FilesManager_bin.showListedPeregrinoFile(FileRoute);
         String currentCamino = newfile.get(indexL).getCamino().getNombre();
         ArrayList<Localidad> localidades = FilesManager_bin.showListedLocalidadFile(FileRouteLocalidad);
-        LocalidadesTextArea.setText("");
+        LocalidadesTextArea.setText("Nro.\tNombre\tComunidadAutonoma\tCodigoPostal\tTipo\n");
         switch(currentCamino){
             case "Camino Frances":
                 int j1 = 1;

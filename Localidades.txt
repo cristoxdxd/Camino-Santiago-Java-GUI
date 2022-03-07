@@ -1,4 +1,7 @@
 Nro.    Nombre  Comunidad Autonoma  Código Postal   Tipo
+
+Camino Frances
+
 1   St. Jean Pied de Port	Pyrénées-Atlantiques	64220	Salida
 2	Roncesvalles	Navarra	31650	-
 3	Zubiri	Navarra	31630	-
@@ -32,6 +35,9 @@ Nro.    Nombre  Comunidad Autonoma  Código Postal   Tipo
 31	Palas de Rei	Lugo	27200	-
 32	Arzúa	A Coruña	15810	-
 33	O Pedrouzo	A Coruña	15821	-
+
+Camino Portugues
+
 34	Lisboa	Lisboa	1000-001	Salida
 35	Alhandra	Leiria	2600	-
 36	Azanbuja	Lisboa	2050	-
@@ -57,6 +63,9 @@ Nro.    Nombre  Comunidad Autonoma  Código Postal   Tipo
 56	Pontevedra	Pontevedra	36001	-
 57	Caldas de Reis	Pontevedra	36650	-
 58	Padróm	A Coruña	15900	-
+
+Camino Inglés
+
 59	Ferrol	A Coruña	15401	Salida
 60	Neda	A Coruña	15510	-
 61	Pontedeume	A Coruña	15600	-

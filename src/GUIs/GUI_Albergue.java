@@ -16,7 +16,7 @@ public class GUI_Albergue extends javax.swing.JFrame {
         newfile = FilesManager_bin.showListedPeregrinoFile(FileRoutePeregrino);
         String currentCamino = newfile.get(indexA).getCamino().getNombre();
         ArrayList<Albergue> albergue = FilesManager_bin.showListedAlbergueFile(FileRoute);
-        AlbergueTextArea.setText("");
+        AlbergueTextArea.setText("Nro.\tNombre\tCapacidad\tPrecio\tLocalidad\n");
         switch(currentCamino){
             case "Camino Frances":
                 int j1 = 1;

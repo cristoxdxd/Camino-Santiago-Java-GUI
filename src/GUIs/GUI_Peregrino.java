@@ -120,7 +120,7 @@ public class GUI_Peregrino extends javax.swing.JFrame {
 
         NombreLabel.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         NombreLabel.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(NombreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 160, 30));
+        jPanel1.add(NombreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 580, 30));
 
         IDLabel.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
         IDLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -173,7 +173,7 @@ public class GUI_Peregrino extends javax.swing.JFrame {
         String unCamino = (peregrino.get(indexPe)).getCamino().getNombre();
         int indexCamino = FilesManager_bin.getIndexCamino(unCamino, FileRouteCamino);
         this.setVisible(false);
-        GUI_Camino pVisible = new GUI_Camino(indexCamino);
+        GUI_Camino pVisible = new GUI_Camino(indexCamino, indexPe);
         pVisible.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

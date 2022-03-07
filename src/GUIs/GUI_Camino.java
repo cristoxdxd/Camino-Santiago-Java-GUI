@@ -7,8 +7,10 @@ public class GUI_Camino extends javax.swing.JFrame {
     final String FileRouteCamino = "CaminosBinary.data";
     final String FileRouteEtapas = "EtapasBinary.data";    
     static int indexC;
+    static int indexCPeregrino;
     
-    public GUI_Camino(int index) {
+    public GUI_Camino(int index, int indexPeregrino) {
+        indexCPeregrino = indexPeregrino;
         indexC = index;
         Camino newcamino = new Camino();
         ArrayList<Camino> caminos = FilesManager_bin.showListedCaminoFile(FileRouteCamino);
@@ -21,7 +23,7 @@ public class GUI_Camino extends javax.swing.JFrame {
         NombreLabel.setText(currentCamino);
         KMLabel.setText(Double.toString((caminos.get(indexC)).getKm()));
         TiempoLabel.setText(Integer.toString(((caminos.get(indexC)).getTiempo())));
-        EtapasTextArea.setText("");
+        EtapasTextArea.setText("Nro.\tNombre\t\tKm\tTiempo\tLocalidades\n");
         switch(currentCamino){
             case "Camino Frances":
                 int j1 = 1;
@@ -37,7 +39,7 @@ public class GUI_Camino extends javax.swing.JFrame {
                     EtapasTextArea.append((newArrayEtapas.get(i-1)).formatRegister(j2) + "\n");
                     j2++;
                 }
-                EtapasTextArea.append((newArrayEtapas.get(64)).formatRegister(26));
+                EtapasTextArea.append((newArrayEtapas.get(newArrayEtapas.size()-1)).formatRegister(26));
                 break;
             case "Camino Inglés":
                 int j3 = 1;
@@ -45,7 +47,7 @@ public class GUI_Camino extends javax.swing.JFrame {
                     EtapasTextArea.append((newArrayEtapas.get(i-1)).formatRegister(j3) + "\n");
                     j3++;
                 }
-                EtapasTextArea.append((newArrayEtapas.get(64)).formatRegister(6));
+                EtapasTextArea.append((newArrayEtapas.get(newArrayEtapas.size()-1)).formatRegister(6));
                 break;
         }
     }
@@ -158,7 +160,7 @@ public class GUI_Camino extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.setVisible(false);
-        GUI_Peregrino pVisible = new GUI_Peregrino(indexC);
+        GUI_Peregrino pVisible = new GUI_Peregrino(indexCPeregrino);
         pVisible.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
