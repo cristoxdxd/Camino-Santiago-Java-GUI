@@ -342,7 +342,7 @@ public class FilesManager_bin {
         System.out.println(search);
         System.out.println(FileRoute);
         for(int i = 0; i < peregrino.size(); i++){
-            if((peregrino.get(i)).getNombre().equals(search)){
+            if(Integer.toString((peregrino.get(i)).getID()).equals(search)){
                 return i;
             }
         }
@@ -371,6 +371,20 @@ public class FilesManager_bin {
         System.out.println(FileRoute);
         for(int i = 0; i < Etapa.size(); i++){
             if((Etapa.get(i)).getNombre().equals(search)){
+                return i;
+            }
+        }
+        return index;
+    }
+    
+    public static int getIndexCamino(String search, String FileRoute){
+        ArrayList<Camino> Camino = new ArrayList<>();
+        Camino = showListedCaminoFile(FileRoute);
+        int index = 0;
+        System.out.println(search);
+        System.out.println(FileRoute);
+        for(int i = 0; i < Camino.size(); i++){
+            if((Camino.get(i)).getNombre().equals(search)){
                 return i;
             }
         }

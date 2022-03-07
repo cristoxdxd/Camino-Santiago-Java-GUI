@@ -12,12 +12,13 @@ public class TestControllerbin_Caminos {
         System.out.println("\tTo test Binary Caminos\n--> Cristopher Herrera");
         String FileRoute = "CaminosBinary.data";
         String FileRouteEtapa = "EtapasBinary.data";
-        ArrayList<Etapa> etapasInit = FilesManager_bin.showListedEtapaFile(FileRouteEtapa);
+        /*ArrayList<Etapa> etapasInit = FilesManager_bin.showListedEtapaFile(FileRouteEtapa);
         int indexEtapa1 = FilesManager_bin.getIndexEtapa("Etapa 1 (Camino Frances)", FileRouteEtapa);
         int indexEtapa2 = FilesManager_bin.getIndexEtapa("Etapa 2 (Camino Frances)", FileRouteEtapa);
         Etapa[] initEtapa1 = {etapasInit.get(indexEtapa1), etapasInit.get(indexEtapa2)};
         Camino[] camino = {new Camino("Camino Frances", 24.2, 6, initEtapa1)};
-        FilesManager_bin.addRegisters(camino, FileRoute);
+        FilesManager_bin.addRegisters(camino, FileRoute);*/
+                
         int option = 0;
         final int exit = 7;
         do{
@@ -43,7 +44,7 @@ public class TestControllerbin_Caminos {
                     FilesManager_bin.showFile(FileRoute);
                     break;
                 case 3:
-                    Etapa[] newEtapas = new Etapa[40];
+                    Etapa[] newEtapas = new Etapa[6];
                     ArrayList<Etapa> etapas = FilesManager_bin.showListedEtapaFile(FileRouteEtapa);
                     System.out.println("\n\tRegistro Nuevo Camino");
                     String unaEtapa;
@@ -74,16 +75,31 @@ public class TestControllerbin_Caminos {
                     System.out.println(FilesManager_bin.findCaminoinFile(searchWord, FileRoute));
                     break;
                 case 5:
+                    Etapa[] newEtapas1 = new Etapa[33];
+                    ArrayList<Etapa> etapas1 = FilesManager_bin.showListedEtapaFile(FileRouteEtapa);
                     ArrayList<Camino> newfile = new ArrayList<>();
                     newfile = FilesManager_bin.showListedCaminoFile(FileRoute);
                     int index1 = StandarReading.readInt("Ingrese el número de lista a actualizar: ")-1;
                     System.out.println("\n\tCamino a actualizar \n" + newfile.get(index1));
+                    int x = 0;
+                    do{
+                        unaEtapa = StandarReading.readString("\nIngrese las etapas\n(Press 'X' to exit)\n");
+                        if (FilesManager_bin.findEtapainFile(unaEtapa, FileRouteEtapa)){
+                            int j = FilesManager_bin.getIndexEtapa(unaEtapa, FileRouteEtapa);
+                            newEtapas1[x] = etapas1.get(j);
+                        }else{
+                            System.out.println("No es una localidad.");
+                        }
+                        x++;
+                    }while(!unaEtapa.equalsIgnoreCase("X"));
                     String Nombre = StandarReading.readString("Actualizar Nombre: ");
                     double Km = StandarReading.readDouble("Actualizar Km: ");
                     int tiempo = StandarReading.readInt("Actualizar tiempo: ");
                     if (Nombre.length()>0) (newfile.get(index1)).setNombre(Nombre);
                     if (Km>0) (newfile.get(index1)).setKm(Km);
                     if (tiempo>0) (newfile.get(index1)).setTiempo(tiempo);
+                    (newfile.get(index1)).setEtapas(newEtapas1);
+                    //System.out.println(Arrays.toString(newEtapas1));
                     System.out.println("\tDatos actualizados\n" + newfile.get(index1));
                     Object[] modifiedStudent = newfile.toArray();
                     if (FilesManager_bin.addRegisters(modifiedStudent, FileRoute))

@@ -1,0 +1,66 @@
+Nro.    Nombre  Comunidad Autonoma  Código Postal   Tipo
+1   St. Jean Pied de Port	Pyrénées-Atlantiques	64220	Salida
+2	Roncesvalles	Navarra	31650	-
+3	Zubiri	Navarra	31630	-
+4	Pamplona	Pamplona	31000	-
+5	Puente La Reina	Navarra	31100	-
+6	Estella	Navarra	31200	-
+7	Los Arcos	Navarra	31210	-
+8	Logroño	La Rioja	26001	-
+9	Nájera	La Rioja	26300	-
+10	Sto. Domingo de la Calzada	La Rioja	26250	-
+11	Belorado	Burgos	09250	-
+12	San Juan de Ortega	Burgos	09199	-
+13	Burgos	Burgos	09001	-
+14	Hornillos del Camino	Burgos	09230	-
+15	Castrojeriz	Burgos	09110	-
+16	Frómista	Burgos	34440	-
+17	Carrión de los Condes	Palencia	34120	-
+18	Terradillo de los Templarios	Palencia	34349	-
+19	Bercianos del Real Camino	León	24325	-
+20	Mansilla de las Mulas	León	24210	-
+21	León	León	24001	-
+22	San Martín del Camino	León	24393	-
+23	Astorga	León	24393	-
+24	Foncebadón	León	24722	-
+25	Ponferrada	León	24400	-
+26	Villafranca del Bierzo	León	24500	-
+27	O Cebreiro	Lugo	27671	-
+28	Triacastela	Lugo	27630	-
+29	Sarria	Lugo	27600	-
+30	Portomarín	Lugo	27170	-
+31	Palas de Rei	Lugo	27200	-
+32	Arzúa	A Coruña	15810	-
+33	O Pedrouzo	A Coruña	15821	-
+34	Lisboa	Lisboa	1000-001	Salida
+35	Alhandra	Leiria	2600	-
+36	Azanbuja	Lisboa	2050	-
+37	Santarém	Santarém	2000	-
+38	Golegä	Santarém	2150-120	-
+39	Tomar	Santarém	2300	-
+40	Alvaiázere	Leiria	3950	-
+41	Rabaçal	Coimbra	3230	-
+42	Coímbra	Coimbra	3000	-
+43	Mealhada	Aveiro	3050	-
+44	Águeda	Aveiro	3750	-
+45	Albergaria a Velha	Aveiro	3850	-
+46	Oliveira de Azeméis	Aveiro	3720	-
+47	Grijó	Porto	4415	-
+48	Oporto	Oporto	4000	-
+49	Vilarinho	Oporto	4795	-
+50	Barcelos	Braga	4740	-
+51	Ponte de Lima	Viana do Castelo	4990	-
+52	Rubiães	Viana do Castelo	4940	-
+53	Tui	Pontevedra	36700	-
+54	O Porriño	Pontevedra	36400	-
+55	Redondela	Pontevedra	36800	-
+56	Pontevedra	Pontevedra	36001	-
+57	Caldas de Reis	Pontevedra	36650	-
+58	Padróm	A Coruña	15900	-
+59	Ferrol	A Coruña	15401	Salida
+60	Neda	A Coruña	15510	-
+61	Pontedeume	A Coruña	15600	-
+62	Betanzos	A Coruña	15300	-
+63	Bruma	A Coruña	15689	-
+64	Sigüeiro	A Coruña	15888	-
+65	Santiago de Compostela	A Coruña	15701	Llegada

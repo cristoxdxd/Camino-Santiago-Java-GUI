@@ -17,9 +17,7 @@ public class StandarReading {
         System.out.print(message);
         Scanner input = new Scanner(System.in);
         words = input.nextLine();
-        if (words == "true"){ 
-            returnBoolean = true;
-        }
+        returnBoolean = Boolean.parseBoolean(words);
         return returnBoolean;
     }
     

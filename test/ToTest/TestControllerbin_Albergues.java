@@ -36,7 +36,7 @@ public class TestControllerbin_Albergues {
                     FilesManager_bin.showFile(FileRoute);
                     break;
                 case 3:
-                    System.out.println("\n\tRegistration Nuevo Albergue");
+                    System.out.println("\n\tRegistracion Nuevo Albergue");
                     Albergue newClient = new Albergue(
                             StandarReading.readString("Nombre: "), 
                             StandarReading.readInt("Capacidad: "), 
@@ -73,7 +73,7 @@ public class TestControllerbin_Albergues {
                 case 6:
                     ArrayList<Albergue> newfile2 = new ArrayList<>();
                     newfile2 = FilesManager_bin.showListedAlbergueFile(FileRoute);
-                    int index2 = StandarReading.readInt("Ingrese el número de lista a remover: ");
+                    int index2 = StandarReading.readInt("Ingrese el número de lista a remover: ")-1;
                     System.out.println("\tAlbergue a remover\n" + newfile2.get(index2));
                     if(StandarReading.readString("Seguro que quieres eliminar esta etapa? (S/N): ").equalsIgnoreCase("S")){
                         newfile2.remove(index2);

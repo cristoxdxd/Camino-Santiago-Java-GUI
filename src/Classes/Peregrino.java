@@ -8,6 +8,8 @@ import java.util.Arrays;
  * @author Cristopher Herrera
  */
 public class Peregrino implements Serializable{
+    private static final long serialVersionUID = 1500558707654232011L;
+    
     private String Nombre;
     private int ID;
     private String Clave;
@@ -16,6 +18,14 @@ public class Peregrino implements Serializable{
     private Localidad[] localidades;
     
     public Peregrino(){}
+    
+    public Peregrino(String Nombre, int ID, String Clave, String Domicilio, Camino camino){
+        this.Nombre = Nombre;
+        this.ID = ID;
+        this.Clave = Clave;
+        this.Domicilio = Domicilio;
+        this.camino = camino;
+    }
     
     public Peregrino(String Nombre, int ID, String Clave, String Domicilio, Camino camino, Localidad[] localidades){
         this.Nombre = Nombre;
@@ -27,12 +37,19 @@ public class Peregrino implements Serializable{
     }
     
     public String formatRegister(int number){
-        String register = number + "\t" + Nombre + "\t" +
+        String register;
+        String[] someLocalidades = new String[localidades.length];
+        for (int i = 0; i < localidades.length; i++){
+            if(!localidades[i].getNombre().equals("No registrado")){
+                someLocalidades[i] = localidades[i].getNombre();
+            }
+        }
+        register = number + "\t" + Nombre + "\t" +
                 ID + "\t" +
                 Clave + "\t" +
                 Domicilio + "\t" +
-                camino + "\t" +
-                Arrays.toString(localidades);
+                camino.getNombre() + "\t" +
+                Arrays.toString(someLocalidades);
         return register;
     }
     

@@ -22,7 +22,7 @@ public class TestControllerbin_Etapas {
                           new Etapa("Etapa 2 (Camino Frances)", 21.5, 5, initLocalidades2)};
         FilesManager_bin.addRegisters(etapas, FileRoute);*/
         int option = 0;
-        final int exit = 8;
+        final int exit = 7;
         do{
             option = StandarReading.readInt("\n\tEtapas"
                     + "\n1. Mostrar lista de Etapas"
@@ -31,23 +31,31 @@ public class TestControllerbin_Etapas {
                     + "\n4. Buscar en Etapas"
                     + "\n5. Actualizar una Etapa (por número de lista)"
                     + "\n6. Eliminar una Etapa (por número de lista)"
-                    + "\n7. Listar Localidades"
                     + "\n" + Integer.toString(exit) + ". Salir"
                     + "\nOpción: ");
             switch(option){
                 case 1:
                     ArrayList<Etapa> newArrayEtapas = new ArrayList<>();
                     newArrayEtapas = FilesManager_bin.showListedEtapaFile(FileRoute);
+                    System.out.println("\n\tEtapas");
                     System.out.printf("\n%-6s%-40s%-15s%-10s%-30s","Nro.","Nombre","Km", "Tiempo (h)", "Localidades\n");
                     for(int i = 1; i < newArrayEtapas.size()+1; i++){
                         System.out.println((newArrayEtapas.get(i-1)).formatRegister(i));
+                    }
+                    
+                    ArrayList<Localidad> newArrayLocalidades = new ArrayList<>();
+                    newArrayLocalidades = FilesManager_bin.showListedLocalidadFile(FileRouteLocalidad);
+                    System.out.println("\n\tLocalidades");
+                    System.out.printf("\n%-6s%-25s%-25s%-10s%-10s%-15s%-10s","Nro.","Nombre","Comunidad Autonoma", "Código Postal", "Salida", "Intermedio", "Llegada\n");
+                    for(int j = 1; j < newArrayLocalidades.size()+1; j++){
+                        System.out.println((newArrayLocalidades.get(j-1)).formatRegister(j));
                     }
                     break;
                 case 2:
                     FilesManager_bin.showFile(FileRoute);
                     break;
                 case 3:
-                    Localidad[] newlocalidades = new Localidad[3];
+                    Localidad[] newlocalidades = new Localidad[2];
                     ArrayList<Localidad> localidades = FilesManager_bin.showListedLocalidadFile(FileRouteLocalidad);
                     System.out.println("\n\tRegistro Nueva Etapa");
                     String unaLocalidad;
@@ -103,14 +111,6 @@ public class TestControllerbin_Etapas {
                         Object[] modifiedList = newfile2.toArray();
                         if (FilesManager_bin.addRegisters(modifiedList, FileRoute))
                             System.out.println("La estapa fue removida.");
-                    }
-                    break;
-                case 7:
-                    ArrayList<Localidad> newArrayLocalidades = new ArrayList<>();
-                    newArrayLocalidades = FilesManager_bin.showListedLocalidadFile(FileRoute);
-                    System.out.printf("\n%-6s%-30s%-25s%-10s%-10s%-15s%-10s","Nro.","Nombre","Comunidad Autonoma", "Código Postal", "Salida", "Intermedio", "Llegada\n");
-                    for(int j = 1; j < newArrayLocalidades.size()+1; j++){
-                        System.out.println((newArrayLocalidades.get(j-1)).formatRegister(j));
                     }
                     break;
                 case exit:
