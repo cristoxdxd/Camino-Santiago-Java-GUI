@@ -22,8 +22,6 @@ Java Application with GUI for a Camino de Santiago Manager
        
 2. Import it in NetBeans IDE or any other Java IDE.
 3. Compile and run the application. 
-   
-Another option is to run the [.jar](dist/Camino_a_Santiago.jar) `dist/Camino_a_Santiago.jar`
 
 ## License
 
